@@ -43,6 +43,9 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
+
+//app.use(express.static(publicDirectoryPath))
+
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 })
@@ -58,12 +61,6 @@ const access = (req,res,next)=>{
 app.get('/',access,async(req,res)=>{
   res.render('articles/signup')
 })
-
-// app.get('/chat',authcheck,(req,res)=>{
-//   console.log(" access value "+ req.access)
-//   query = req.params.text
-//   res.redirect('http://localhost:4000/'+query);
-// })
 
 app.get('/login',access,async(req,res)=>{
   res.render('articles/login')
@@ -88,17 +85,32 @@ app.use('/articles', articleRouter)
 app.use(userRoute)
 
 app.get('/chat',auth.authcheck,(req,res)=>{
-  res.sendFile('/Users/subhradipmukherjee/Desktop/node/college-space/public/index.html');
+  
+  res.sendFile(path.join(publicDirectoryPath, "index.html"));
   app.use(express.static(publicDirectoryPath))
   
 })
 
 app.get('/open',auth.authcheck,auth.chatauth,(req,res)=>{
-  res.sendFile('/Users/subhradipmukherjee/Desktop/node/college-space/public/chat.html');
+  
+  res.sendFile(path.join(publicDirectoryPath, "chat.html"));
   app.use(express.static(publicDirectoryPath))
 })
 
 app.get('/:something',auth.authcheck,(req,res)=>{
+  // console.log("*****chat testing*****")
+  // console.log(req.url)
+  // console.log(req.params.something)
+  // if(req.params.something == "chat.html")
+  // {
+  //   console.log("hi")
+  //   auth.chatauth
+  //   app.use(express.static(publicDirectoryPath))
+  // }else{
+  //   console.log("reached public dir path")
+  //   app.use(express.static(publicDirectoryPath))
+  // }
+  
   res.redirect('/all')
 })
 
@@ -106,7 +118,7 @@ io.on('connection', (socket) => {
   console.log('New WebSocket connection')
 
   socket.on('join', (options, callback) => {
-      const { error, user } = addUser({ id: socket.id, ...options })    //id: socket.id
+      const { error, user } = addUser({ id: socket.id, ...options })    
 
       if (error) {
           return callback(error)
@@ -159,6 +171,3 @@ const port = process.env.PORT
 server.listen(port, () => {
   console.log(`Server is up on port ${port}!`)
 })
-// app.listen(5000,()=>{
-//   console.log("server is up on 5000")
-// })
