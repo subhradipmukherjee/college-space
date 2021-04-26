@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/css/styles.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+    <style>
+  .navbar-custom {
+              background-color: #280240;
+          }
+  .navbar-custom .navbar-brand,.nav-link,
+  .navbar-custom .navbar-text {
+              color: white;
+          }
+  .navbar-brand{
+    border-style: solid;border-color: white;
+    padding: .3em;
+  }
+  .navbar-brand:hover {
+  
+  color: #280240;
+  background-color: white;
+}
+.nav-link:hover{
+    color: #d29dec;
+}
+  .active{
+    color: #f7ac22;
+  }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-custom">
+  <a href="#" class="navbar-brand">COLLEGE-SPACE</a></div>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarM">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarM">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a href="/all" class="nav-link ">Feed</a>
+           </li>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a href="/chat" class="nav-link active">Chat Room</a>
+            </li>
+      </ul>
+  </div>
+</nav>
+     <div class="centered-form">
+            <div class="centered-form__box" >
+                <h1>Join</h1>
+                <form action="/open">
+                    <label>Display name</label>
+                    <input type="text" name="username" placeholder="Display name" required>
+                    <label>Room</label>
+                    <select  name="room" placeholder="Room" required>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                        <option value="All Years">Common</option>
+                    </select>
+                    <button>Join</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

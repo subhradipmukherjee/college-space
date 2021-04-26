@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+    <style>
+   button {
+    font-size: 113%;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: blueviolet;
+
+    
+}
+button:hover{
+  background-color: #d29dec;
+}
+  .navbar-custom {
+              background-color: #280240;
+          }
+  .navbar-custom .navbar-brand,.nav-link,
+  .navbar-custom .navbar-text {
+              color: white;
+          }
+  .navbar-brand{
+    border-style: solid;border-color: white;
+    padding: .3em;
+  }
+  .navbar-brand:hover {
+  
+  color: #280240;
+  background-color: white;
+}
+.nav-link:hover{
+    color: #d29dec;
+}
+  .post {
+  height: 10%;
+  background-color: #f7ac22;
+  color: black;
+  position:relative;
+  margin-top: 4%;
+  margin-left: 48%;
+}
+
+.title{
+  text-align: center;
+  color: #280240;
+  margin-top:3%;
+
+}
+hr{
+  border: 1px solid #280240;
+  border-radius: 5px;
+}
+.content-box { 
+  box-sizing: content-box; 
+}
+div[class*="box"] {
+  justify-content:safe;
+  width: 300px;
+  padding: 20px;
+  background: #444;
+  color: white;
+  border: 10px solid red;
+  background-clip: content-box;
+  text-indent: 20px;
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-custom">
+<a href="#" class="navbar-brand">COLLEGE-SPACE</a></div>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarM">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarM">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/all" class="nav-link">Feed</a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a href="/chat" class="nav-link">Chat Room</a>
+          </li>
+      </ul>
+  </div>
+</nav>  <!-- #6c757d  class="text-muted mb-2"-->
+  <div class="container">
+    <h1 class="title" ><%= article.title %></h1>
+    <h6 class="title" style="color: #6c757d ;">Posted by <%= article.owner.name %> on <%= article.createdAt.toLocaleDateString() %>  </h6>
+    </div>
+    <div class="container">
+      <hr>
+      <p style="color: black;font-size:.7cm;">
+        <%= article.target %>
+        <br>
+        <%= article.description %>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

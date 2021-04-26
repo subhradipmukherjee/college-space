@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+  <style>
+    button {
+    font-size: 113%;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: blueviolet;
+
+    
+}
+button:hover{
+  background-color: #d29dec;
+}
+.navbar-custom {
+            background-color: #280240;
+        }
+.navbar-custom .navbar-brand,.nav-link,
+.navbar-custom .navbar-text {
+            color: white;
+        }
+  .navbar-brand{
+    border-style: solid;border-color: white;
+    padding: .3em;
+  }
+  .navbar-brand:hover {
+  
+  color: #280240;
+  background-color: white;
+}
+.nav-link:hover{
+    color: #d29dec;
+}
+.active{
+    color: #f7ac22;
+  }
+.post {
+  height: 10%;
+  text-align: center;
+  background-color: #f7ac22;
+  color: black;
+  position:relative;
+  margin-top: 4%;
+  margin-left: 48%;
+}
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-custom">
+  <a href="#" class="navbar-brand">COLLEGE-SPACE</a></div>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+           <li class="nav-item">
+            <a href="/all" class="nav-link active">Feed</a>
+           </li>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a href="/chat" class="nav-link">Chat Room</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+  <div >
+    <button class="post"  onclick="window.location.href='/articles/new%>'">Post Something?</button>
+    <a href="/all" style="margin-left: 1%;"><i class="fas fa-sync"></i></a>
+    <!--<a href="/articles/new" class="btn btn-success" >New Article</a>-->
+  </div>
+  <div class="container">
+    <% articles.forEach(article => { %>
+      <% if (k == article.owner._id) { %>
+      <div class="card mt-4" style="border: 1px solid black;">
+        <div class="card-body">
+          <h4 class="card-title"><%= article.title.toUpperCase() %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            <a style="color: black;"><pre>Post by:<%= article.owner.name %>  <%= article.createdAt.toLocaleDateString() %> </pre></a>
+              <%= article.target %>
+          </div>
+          <div class="card-text mb-2"><%= article.description%></div>
+
+            <div>
+               <button onclick="window.location.href='/articles/<%= article.slug %>'">VIEW</button>
+               <button onclick="window.location.href='/articles/edit/<%= article.id %>'">EDIT</button>
+               <form  action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                 <button style="color: red;" type="submit">DELETE</button>
+               </form>
+            </div>
+        </div>
+      </div>
+      <% } else { %>
+        <div class="card mt-4" style="border: 1px solid black;">
+          <div class="card-body">
+            <h4 class="card-title"><%= article.title.toUpperCase() %></h4>
+            <div class="card-subtitle text-muted mb-2">
+            <a style="color: black;"><pre>Post by:<%= article.owner.name %>  <%= article.createdAt.toLocaleDateString() %> </pre></a>
+              <%= article.target %>
+          </div>
+          <div class="card-text mb-2"><%= article.description%></div>
+
+            <div>
+            <button onclick="window.location.href='/articles/<%= article.slug %>'">VIEW</button>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    <% }) %>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/06db0e1238.js" crossorigin="anonymous"></script>
+</body>
+</html>
