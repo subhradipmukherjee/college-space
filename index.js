@@ -30,10 +30,10 @@ const publicDirectoryPath = path.join(__dirname, '/public')
 const SESS_NAME = 'sid'
 app.use(session({
   name: SESS_NAME,
-  secret: 'I dont know the secret',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/Blog-DB' }),
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
   cookie: {
       maxAge : 60 * 60 * 1000
   }
