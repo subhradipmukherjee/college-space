@@ -5,11 +5,11 @@
   <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">
 </div>
 <div class="form-group">
-  <label for="target" style="color:#280240 ;">Description</label>
-  <textarea name="target" id="targer" class="form-control"><%= article.target %></textarea>
+  <label for="target" style="color: #280240;">Target Audience</label>
+  <textarea name="target" id="target" class="form-control"><%= article.target%></textarea>
 </div>
 <div class="form-group">
-  <label for="description"  style="color:#280240 ;">Markdown</label>
-  <textarea required name="description" id="description" class="form-control"><%= article.description%></textarea>
+  <label for="description" style="color: #280240;">Description</label>
+          <textarea required name="description" id="description" class="form-control"><%= article.description %></textarea>
 </div>
 <button class="block" type="submit">SAVE CHANGES</button>

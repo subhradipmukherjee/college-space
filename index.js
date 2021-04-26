@@ -88,13 +88,13 @@ app.use('/articles', articleRouter)
 app.use(userRoute)
 
 app.get('/chat',auth.authcheck,(req,res)=>{
-  res.sendFile('/Users/subhradipmukherjee/Desktop/node/Markdown-Blog-master/public/index.html');
+  res.sendFile('/Users/subhradipmukherjee/Desktop/node/college-space/public/index.html');
   app.use(express.static(publicDirectoryPath))
   
 })
 
 app.get('/open',auth.authcheck,auth.chatauth,(req,res)=>{
-  res.sendFile('/Users/subhradipmukherjee/Desktop/node/Markdown-Blog-master/public/chat.html');
+  res.sendFile('/Users/subhradipmukherjee/Desktop/node/college-space/public/chat.html');
   app.use(express.static(publicDirectoryPath))
 })
 
